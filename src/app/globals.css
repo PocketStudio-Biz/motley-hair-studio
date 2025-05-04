@@ -1,26 +1,93 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: hsl(0 0% 96%); /* #F5F5F5 Light Neutral */
+    --foreground: hsl(0 0% 10%); /* #1A1A1A High Contrast */
+
+    --card: hsl(0 0% 100%); /* #FFFFFF Card Background */
+    --card-foreground: hsl(0 0% 10%); /* #1A1A1A Text on Card */
+
+    --popover: hsl(0 0% 100%); /* #FFFFFF Popover Background */
+    --popover-foreground: hsl(0 0% 10%); /* #1A1A1A Text on Popover */
+
+    --primary: hsl(39 37% 64%); /* #C5A880 Muted Gold */
+    --primary-foreground: hsl(0 0% 10%); /* #1A1A1A Text on Primary */
+
+    --secondary: hsl(271 76% 53%); /* #8A2BE2 Royal Purple */
+    --secondary-foreground: hsl(0 0% 100%); /* #FFFFFF Text on Secondary */
+
+    --muted: hsl(210 40% 96.1%); /* Shadcn Slate-100 */
+    --muted-foreground: hsl(215.4 16.3% 46.9%); /* Shadcn Slate-500 */
+
+    --accent: hsl(326 80% 38%); /* #B31375 Rich Pink-Magenta */
+    --accent-foreground: hsl(0 0% 100%); /* #FFFFFF Text on Accent */
+
+    --destructive: hsl(0 84.2% 60.2%); /* Shadcn Red-500 */
+    --destructive-foreground: hsl(0 0% 98%); /* Shadcn Slate-50 */
+
+    --border: hsl(214.3 31.8% 91.4%); /* Shadcn Slate-200 */
+    --input: hsl(214.3 31.8% 91.4%); /* Shadcn Slate-200 */
+    --ring: hsl(39 37% 64%); /* #C5A880 Muted Gold for focus */
+
+    --radius: 0.625rem; /* Custom radius from previous file */
+
+    --dark-footer-bg: hsl(0 2% 11%); /* #1D1C1C Dark Footer Background */
+
+    --font-sans: "var(--font-inter)", sans-serif;
+    --font-serif: "var(--font-playfair)", serif;
+  }
+
+  .dark {
+    --background: hsl(0 0% 10%); /* #1A1A1A High Contrast */
+    --foreground: hsl(0 0% 96%); /* #F5F5F5 Light Neutral */
+
+    --card: hsl(0 2% 11%); /* #1D1C1C Dark Footer (used as card bg) */
+    --card-foreground: hsl(0 0% 96%); /* #F5F5F5 Text on Card */
+
+    --popover: hsl(0 2% 11%); /* #1D1C1C Dark Popover */
+    --popover-foreground: hsl(0 0% 96%); /* #F5F5F5 Text on Popover */
+
+    --primary: hsl(39 47% 75%); /* #E1C8A0 Lighter Gold */
+    --primary-foreground: hsl(0 0% 10%); /* #1A1A1A Text on Primary */
+
+    --secondary: hsl(271 81% 67%); /* #A96BEE Lighter Purple */
+    --secondary-foreground: hsl(0 0% 100%); /* #FFFFFF Text on Secondary */
+
+    --muted: hsl(222.2 47.4% 11.2%); /* Shadcn Slate-800 */
+    --muted-foreground: hsl(215 20.2% 65.1%); /* Shadcn Slate-400 */
+
+    --accent: hsl(326 65% 55%); /* #D8439A Lighter Pink-Magenta */
+    --accent-foreground: hsl(0 0% 100%); /* #FFFFFF Text on Accent */
+
+    --destructive: hsl(0 62.8% 30.6%); /* Shadcn Red-900 */
+    --destructive-foreground: hsl(0 0% 98%); /* Shadcn Slate-50 */
+
+    --border: hsl(217.2 32.6% 17.5%); /* Shadcn Slate-800 (as border) */
+    --input: hsl(217.2 32.6% 17.5%); /* Shadcn Slate-800 (as input) */
+    --ring: hsl(271 81% 67%); /* #A96BEE Lighter Purple for focus */
+
+    --dark-footer-bg: hsl(0 2% 11%); /* #1D1C1C Dark Footer Background */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+
+/* Define Font Variables */
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
 }
